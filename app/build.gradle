@@ -28,23 +28,22 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
-
-//    // 添加依赖。注意，版本号必须一致。
-//    // 基础功能 (必需)
-//    compile 'com.netease.nimlib:basesdk:3.3.0'
-//    // 音视频需要
-//    compile 'com.netease.nimlib:avchat:3.3.0'
-//    // 聊天室需要
-//    compile 'com.netease.nimlib:chatroom:3.3.0'
-//    // 实时会话服务需要
-//    compile 'com.netease.nimlib:rts:3.3.0'
-//    // 全文检索服务需要
-//    compile 'com.netease.nimlib:lucene:3.3.0'
-
+    //    // 添加依赖。注意，版本号必须一致。
+    //    // 基础功能 (必需)
+    //    compile 'com.netease.nimlib:basesdk:3.3.0'
+    //    // 音视频需要
+    //    compile 'com.netease.nimlib:avchat:3.3.0'
+    //    // 聊天室需要
+    //    compile 'com.netease.nimlib:chatroom:3.3.0'
+    //    // 实时会话服务需要
+    //    compile 'com.netease.nimlib:rts:3.3.0'
+    //    // 全文检索服务需要
+    //    compile 'com.netease.nimlib:lucene:3.3.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
 }

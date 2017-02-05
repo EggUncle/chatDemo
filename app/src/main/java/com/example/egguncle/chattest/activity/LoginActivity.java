@@ -19,7 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edUsername;
     private EditText edPasswd;
     private Button btn;
-    private Button btnLogout;
+    private Button btnToRegistered;
+
+
 
 
 
@@ -38,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         edUsername = (EditText) findViewById(R.id.ed_username);
         edPasswd = (EditText) findViewById(R.id.ed_passwd);
         btn = (Button) findViewById(R.id.btn_login);
-        btnLogout = (Button) findViewById(R.id.btn_logout);
+        btnToRegistered = (Button) findViewById(R.id.btn_to_registered);
+
     }
 
     private void initAction(){
@@ -46,13 +49,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 doLogin();
+                //注销的方法
+                //NIMClient.getService(AuthService.class).logout();
             }
         });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        btnToRegistered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //注销后不接收消息
-                NIMClient.getService(AuthService.class).logout();
+               Intent intent=new Intent(LoginActivity.this,RegisteredActivity.class);
+                startActivity(intent);
             }
         });
     }

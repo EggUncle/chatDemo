@@ -1,10 +1,13 @@
 package com.example.egguncle.chattest;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Environment;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.egguncle.chattest.activity.MessageActivity;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
@@ -19,19 +22,33 @@ import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 
 public class MyApplication extends Application {
 
+    //用于全局的上下文对象
+    private static Context context;
+
+    //volley队列
+    private static RequestQueue queue;
+
+
     @Override
     public void onCreate() {
 
         // SDK初始化（启动后台服务，若已经存在用户登录信息， SDK 将完成自动登录）
         NIMClient.init(this, loginInfo(), options());
 
+        //获取context
+        context = getApplicationContext();
+        //请求队列初始化
+        queue = Volley.newRequestQueue(context);
+    }
 
-//        if (inMainProcess()) {
-//            // 注意：以下操作必须在主进程中进行
-//            // 1、UI相关初始化操作
-//            // 2、相关Service调用
-//        }
+    //获取全局context
+    public static Context getMyContext() {
+        return context;
+    }
 
+    //获取volley队列
+    public static RequestQueue getQueue(){
+        return queue;
     }
 
     // 如果返回值为 null，则全部使用默认参数。
