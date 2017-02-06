@@ -11,16 +11,19 @@
     tools:context="com.example.egguncle.chattest.activity.RegisteredActivity">
 
     <EditText
+        android:hint="username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ed_registered_username"
         />
     <EditText
+        android:hint="nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ed_registered_nickname"
         />
     <EditText
+        android:hint="passwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ed_registered_passwd"

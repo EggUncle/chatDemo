@@ -1,5 +1,6 @@
 package com.example.egguncle.chattest.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.egguncle.chattest.R;
+import com.example.egguncle.chattest.util.NetWorkUtil;
+import com.example.egguncle.chattest.util.SPUtil;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.RequestCallback;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edMessage;
     private Button btnSend;
     private EditText edUsername;
+    private SPUtil spUtil;
 
     private final static String TAG = "MainActivity";
 
@@ -36,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //读取用户名数据，若为空，说明没登录，跳转到登录界面
+        SPUtil spUtil=SPUtil.getInstance(this);
+        String userName = spUtil.getUserName();
+        if ("".equals(userName)){
+            Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+        }else{
+           // String userName=spUtil.getUserName();
+            String token=spUtil.getToken();
+            NetWorkUtil.doLoginWithIM(userName,token);
+        }
+
+
         initView();
         initAction();
         initData();
@@ -60,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 };
         NIMClient.getService(MsgServiceObserve.class)
                 .observeReceiveMessage(incomingMessageObserver, true);
+
+
     }
 
     private void initAction() {

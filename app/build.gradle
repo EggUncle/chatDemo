@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.example.egguncle.chattest"
+        applicationId 'com.example.egguncle.chattest'
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -13,7 +13,7 @@ android {
 
         ndk {
             //设置支持的SO库架构
-            abiFilters "armeabi-v7a", "x86","arm64-v8a","x86_64"
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
 
     }
@@ -23,8 +23,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -46,4 +46,5 @@ dependencies {
     //    // 全文检索服务需要
     //    compile 'com.netease.nimlib:lucene:3.3.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.code.gson:gson:2.8.0'
 }

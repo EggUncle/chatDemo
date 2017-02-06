@@ -55,7 +55,13 @@
             android:name="com.netease.nim.appKey"
             android:value="6fdfb363550db8fc24da4d44fb7f1238" />
 
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- 声明云信后台服务，如需保持后台推送，使用独立进程效果会更好。 -->
         <service
@@ -81,11 +87,7 @@
 
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.RegisteredActivity"></activity>
     </application>
